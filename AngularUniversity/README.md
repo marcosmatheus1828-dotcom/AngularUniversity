@@ -171,4 +171,4 @@ Este projeto está sob a licença MIT — veja o arquivo [LICENSE](LICENSE) para
 
 ## 👤 Desenvolvedor
 
-Projeto desenvolvido por **[SEU NOME AQUI]** como atividade complementar da disciplina de Desenvolvimento Web com Angular.
+Projeto desenvolvido por Marcos matheus Gomes Nerys como atividade complementar da disciplina de Desenvolvimento Web com Angular.
