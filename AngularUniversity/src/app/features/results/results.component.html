@@ -1,0 +1,104 @@
+<section class="au-page">
+  <div class="au-results__search au-surface">
+    <app-search-bar
+      [country]="country"
+      [loading]="loading()"
+      (countryChange)="country = $event"
+      (search)="onSearchTriggered($event)"
+    ></app-search-bar>
+  </div>
+
+  @if (loading()) {
+    <div class="au-results__loading">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Buscando universidades em {{ country }}...</p>
+    </div>
+  } @else if (errorMessage()) {
+    <div class="au-results__error au-surface">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ errorMessage() }}</p>
+    </div>
+  } @else if (results().length === 0 && country) {
+    <div class="au-results__empty au-surface">
+      <mat-icon>search_off</mat-icon>
+      <p>Nenhuma universidade encontrada para "{{ country }}".</p>
+    </div>
+  } @else if (results().length > 0) {
+    <!-- Dashboard estatístico -->
+    <div class="au-stats">
+      <div class="au-stats__card au-surface">
+        <span class="au-stats__value">{{ results().length }}</span>
+        <span class="au-stats__label">Universidades encontradas</span>
+      </div>
+      <div class="au-stats__card au-surface">
+        <span class="au-stats__value">{{ uniqueDomainsCount() }}</span>
+        <span class="au-stats__label">Domínios únicos</span>
+      </div>
+      <div class="au-stats__card au-surface">
+        <span class="au-stats__value">{{ favoritesInResultsCount() }}</span>
+        <span class="au-stats__label">Favoritas nesta lista</span>
+      </div>
+      <div class="au-stats__chart au-surface">
+        <canvas
+          baseChart
+          [data]="chartData()"
+          [options]="chartOptions"
+          [type]="'bar'"
+        ></canvas>
+      </div>
+    </div>
+
+    <!-- Filtro local e ordenação -->
+    <div class="au-toolbar au-surface">
+      <mat-form-field appearance="outline" class="au-toolbar__filter">
+        <mat-label>Filtrar por nome</mat-label>
+        <input
+          matInput
+          placeholder="Ex: Federal, State, Technology..."
+          [ngModel]="filterText"
+          (ngModelChange)="onFilterChange($event)"
+        />
+        <mat-icon matSuffix>filter_alt</mat-icon>
+      </mat-form-field>
+
+      <mat-button-toggle-group
+        [value]="sortOrder"
+        (change)="setSortOrder($event.value)"
+        class="au-toolbar__sort"
+      >
+        <mat-button-toggle value="none">Padrão</mat-button-toggle>
+        <mat-button-toggle value="asc">Nome A-Z</mat-button-toggle>
+        <mat-button-toggle value="desc">Nome Z-A</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <p class="au-results__count">
+      Exibindo {{ paged().length }} de {{ sorted().length }} universidade(s)
+    </p>
+
+    <!-- Listagem -->
+    <div class="au-grid">
+      @for (university of paged(); track university.name + university.country) {
+        <app-university-card
+          [university]="university"
+          [isFavorite]="favoritesService.isFavorite(university)"
+          (toggleFavorite)="onToggleFavorite($event)"
+        ></app-university-card>
+      }
+    </div>
+
+    <mat-paginator
+      [length]="sorted().length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [pageIndex]="pageIndex"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+    ></mat-paginator>
+  } @else {
+    <div class="au-results__hint au-surface">
+      <mat-icon>travel_explore</mat-icon>
+      <p>Pesquise um país acima para ver as universidades disponíveis.</p>
+    </div>
+  }
+</section>

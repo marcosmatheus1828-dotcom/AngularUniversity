@@ -1,0 +1,33 @@
+<section class="au-page">
+  <div class="au-favorites__header">
+    <div>
+      <p class="au-favorites__eyebrow">Sua coleção pessoal</p>
+      <h1 class="au-favorites__title">Universidades favoritas</h1>
+    </div>
+
+    @if (favoritesService.favorites().length > 0) {
+      <button mat-stroked-button color="warn" (click)="clearAll()">
+        <mat-icon>delete_outline</mat-icon>
+        Limpar tudo
+      </button>
+    }
+  </div>
+
+  @if (favoritesService.favorites().length === 0) {
+    <div class="au-favorites__empty au-surface">
+      <mat-icon>star_border</mat-icon>
+      <p>Você ainda não tem universidades favoritas.</p>
+      <a mat-flat-button color="primary" routerLink="/">Pesquisar universidades</a>
+    </div>
+  } @else {
+    <div class="au-grid">
+      @for (university of favoritesService.favorites(); track university.name + university.country) {
+        <app-university-card
+          [university]="university"
+          [isFavorite]="true"
+          (toggleFavorite)="onToggleFavorite($event)"
+        ></app-university-card>
+      }
+    </div>
+  }
+</section>

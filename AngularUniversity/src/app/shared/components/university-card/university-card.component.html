@@ -1,0 +1,33 @@
+<article class="au-card" (click)="openWebsite()" tabindex="0">
+  <button
+    mat-icon-button
+    class="au-card__fav"
+    [matTooltip]="isFavorite ? 'Remover dos favoritos' : 'Adicionar aos favoritos'"
+    (click)="onToggleFavorite($event)"
+  >
+    <mat-icon>{{ isFavorite ? 'star' : 'star_border' }}</mat-icon>
+  </button>
+
+  <h3 class="au-card__name">{{ university.name }}</h3>
+
+  <div class="au-card__meta">
+    <span class="au-card__meta-item">
+      <mat-icon inline>public</mat-icon>
+      {{ university.country }}
+      @if (university.state_province) {
+        · {{ university.state_province }}
+      }
+    </span>
+    <span class="au-card__meta-item">
+      <mat-icon inline>language</mat-icon>
+      {{ primaryDomain }}
+    </span>
+  </div>
+
+  <div class="au-card__footer">
+    <span class="au-card__link">
+      Visitar site oficial
+      <mat-icon inline>open_in_new</mat-icon>
+    </span>
+  </div>
+</article>

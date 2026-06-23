@@ -1,0 +1,46 @@
+<form class="au-search" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline" class="au-search__field">
+    <mat-label>Nome do país (em inglês)</mat-label>
+    <input
+      matInput
+      type="text"
+      placeholder="Ex: Brazil, Canada, Germany..."
+      [ngModel]="country"
+      (ngModelChange)="onInputChange($event)"
+      name="country"
+      [matAutocomplete]="auto"
+      autocomplete="off"
+    />
+    <mat-icon matSuffix>travel_explore</mat-icon>
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectSuggestion($event.option.value)">
+    @for (suggestion of suggestions; track suggestion) {
+      <mat-option [value]="suggestion">
+        {{ suggestion }}
+      </mat-option>
+    }
+  </mat-autocomplete>
+
+  <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    class="au-search__button"
+    [disabled]="!country.trim() || loading"
+  >
+    @if (loading) {
+      Buscando...
+    } @else {
+      Pesquisar
+    }
+  </button>
+</form>
+
+<div class="au-search__chips">
+  @for (suggestion of suggestions; track suggestion) {
+    <button type="button" class="au-search__chip" (click)="selectSuggestion(suggestion)">
+      {{ suggestion }}
+    </button>
+  }
+</div>

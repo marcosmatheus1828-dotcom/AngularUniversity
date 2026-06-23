@@ -1,0 +1,41 @@
+.au-search {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  &__field {
+    flex: 1 1 320px;
+  }
+
+  &__button {
+    height: 56px;
+    padding: 0 28px;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  &__chip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--au-border);
+    background-color: var(--au-surface-alt);
+    color: var(--au-text-muted);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.16s ease, color 0.16s ease;
+
+    &:hover {
+      background-color: var(--au-primary);
+      color: #fff;
+      border-color: var(--au-primary);
+    }
+  }
+}

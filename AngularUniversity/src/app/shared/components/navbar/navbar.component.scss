@@ -1,0 +1,105 @@
+.au-navbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  height: 64px;
+  background-color: var(--au-surface);
+  border-bottom: 1px solid var(--au-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--au-text);
+    margin-right: auto;
+  }
+
+  &__crest {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--au-primary), var(--au-primary-dark));
+    color: #fff;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  &__title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      color: var(--au-text-muted);
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 500;
+      transition: background-color 0.18s ease, color 0.18s ease;
+
+      &:hover {
+        background-color: var(--au-surface-alt);
+        color: var(--au-text);
+      }
+
+      &.is-active {
+        color: var(--au-primary);
+        background-color: var(--au-surface-alt);
+      }
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 9px;
+    background-color: var(--au-accent);
+    color: #1c2230;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 720px) {
+    gap: 8px;
+    padding: 0 12px;
+
+    &__title {
+      display: none;
+    }
+
+    &__links {
+      gap: 2px;
+
+      a {
+        padding: 8px;
+        font-size: 13px;
+      }
+    }
+  }
+}

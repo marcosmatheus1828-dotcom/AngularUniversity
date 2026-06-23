@@ -1,0 +1,39 @@
+<section class="au-hero">
+  <div class="au-hero__content">
+    <p class="au-hero__eyebrow">Catálogo mundial de universidades</p>
+    <h1 class="au-hero__title">
+      Encontre universidades de qualquer país do mundo
+    </h1>
+    <p class="au-hero__subtitle">
+      Consulte dados oficiais de instituições de ensino superior — domínio,
+      site institucional e localização — direto de uma base pública e aberta.
+    </p>
+
+    <div class="au-hero__search au-surface">
+      <app-search-bar [country]="country" (search)="onSearch($event)"></app-search-bar>
+    </div>
+  </div>
+</section>
+
+@if (historyService.history().length > 0) {
+  <section class="au-page au-history">
+    <div class="au-history__header">
+      <h2>Pesquisas recentes</h2>
+      <button class="au-history__clear" (click)="clearHistory()">
+        Limpar histórico
+      </button>
+    </div>
+
+    <div class="au-history__list">
+      @for (item of historyService.history(); track item.searchedAt) {
+        <button class="au-history__item au-surface" (click)="repeatSearch(item.country)">
+          <mat-icon>history</mat-icon>
+          <div class="au-history__item-text">
+            <strong>{{ item.country }}</strong>
+            <span>{{ item.resultsCount }} resultado(s) · {{ item.searchedAt | auDate }}</span>
+          </div>
+        </button>
+      }
+    </div>
+  </section>
+}

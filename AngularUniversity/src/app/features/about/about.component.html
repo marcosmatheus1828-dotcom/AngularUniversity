@@ -1,0 +1,56 @@
+<section class="au-page au-about">
+  <p class="au-about__eyebrow">Sobre o projeto</p>
+  <h1 class="au-about__title">Angular University</h1>
+  <p class="au-about__subtitle">
+    Catálogo mundial de universidades, construído com Angular para consumir
+    uma API REST pública e exibir dados reais de instituições de ensino
+    superior de qualquer país do mundo.
+  </p>
+
+  <div class="au-about__grid">
+    <div class="au-surface au-about__card">
+      <h2><mat-icon inline>flag</mat-icon> Objetivo</h2>
+      <p>
+        Este projeto foi desenvolvido como atividade acadêmica da disciplina
+        de Desenvolvimento Web com Angular, aplicando na prática conceitos de
+        componentes, serviços, interfaces, rotas, formulários, data binding e
+        consumo de APIs REST.
+      </p>
+    </div>
+
+    <div class="au-surface au-about__card">
+      <h2><mat-icon inline>public</mat-icon> Fonte dos dados</h2>
+      <p>
+        Os dados são fornecidos pela
+        <a href="http://universities.hipolabs.com" target="_blank" rel="noopener">Universities API (Hipolabs)</a>,
+        uma API pública, gratuita e sem necessidade de autenticação.
+      </p>
+    </div>
+
+    <div class="au-surface au-about__card">
+      <h2><mat-icon inline>code</mat-icon> Tecnologias utilizadas</h2>
+      <ul>
+        @for (tech of techStack; track tech) {
+          <li>{{ tech }}</li>
+        }
+      </ul>
+    </div>
+
+    <div class="au-surface au-about__card">
+      <h2><mat-icon inline>checklist</mat-icon> Funcionalidades</h2>
+      <ul>
+        @for (feature of features; track feature) {
+          <li>{{ feature }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="au-surface au-about__developer">
+    <h2><mat-icon inline>person</mat-icon> Desenvolvedor</h2>
+    <p>
+      Projeto desenvolvido por <strong>[SEU NOME AQUI]</strong> como atividade
+      complementar da disciplina, com publicação do código-fonte no GitHub.
+    </p>
+  </div>
+</section>

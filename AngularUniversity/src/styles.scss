@@ -1,0 +1,66 @@
+@use '@angular/material' as mat;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --au-bg: #f4f6fb;
+  --au-surface: #ffffff;
+  --au-surface-alt: #eef1f8;
+  --au-text: #1c2230;
+  --au-text-muted: #5b6477;
+  --au-border: #e1e5ee;
+  --au-primary: #3454d1;
+  --au-primary-dark: #243a96;
+  --au-accent: #ff8a3d;
+  --au-success: #2e9e6c;
+  --au-shadow: 0 4px 16px rgba(28, 34, 48, 0.08);
+}
+
+html.dark-theme {
+  --au-bg: #11141c;
+  --au-surface: #1b1f2b;
+  --au-surface-alt: #232838;
+  --au-text: #eef1f8;
+  --au-text-muted: #9aa3b8;
+  --au-border: #2c3142;
+  --au-primary: #6e87ff;
+  --au-primary-dark: #4f63d6;
+  --au-accent: #ffa35e;
+  --au-success: #4fd092;
+  --au-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+body {
+  background-color: var(--au-bg);
+  color: var(--au-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.au-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.au-surface {
+  background-color: var(--au-surface);
+  border: 1px solid var(--au-border);
+  border-radius: 14px;
+  box-shadow: var(--au-shadow);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--au-border);
+  border-radius: 6px;
+}
