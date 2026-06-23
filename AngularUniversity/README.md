@@ -10,13 +10,7 @@
 
 ## 📷 Capturas de tela
 
-> ⚠️ **Substitua as imagens abaixo** por capturas de tela reais da aplicação rodando.
-> Salve os arquivos em `docs/screenshots/` com os nomes indicados.
-
-| Tela inicial | Resultados | Favoritos |
-|---|---|---|
-| ![Tela inicial](docs/screenshots/home.png) | ![Resultados](docs/screenshots/results.png) | ![Favoritos](docs/screenshots/favorites.png) |
-
+> infelizmente não consegui colocar imagem 
 ---
 
 ## 🎯 Objetivo do projeto
